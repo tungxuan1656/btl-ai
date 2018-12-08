@@ -1,4 +1,5 @@
 import random
+import datetime
 from .score import score
 
 
@@ -16,6 +17,7 @@ class break_cipher():
         self._bkeyencryp = list()
         self._s = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
         self._ptable = self._s.maketrans(self._s, ''.join(self._bkey))
+        self._dt = datetime.datetime.now()
 
     # bắt đầu giải mã
     def start_break(self):
@@ -28,6 +30,7 @@ class break_cipher():
         print('\t- Khóa giải mã: ' + ''.join(self._bkey))
         print('\t- Khóa mã hóa: ' + ''.join(self._bkeyencryp))
         print('\t> Chuỗi được giải mã: ' + self._ptext)
+        print('\t- Mốc thời gian: ' + str(self._dt))
 
     # lưu lại kết quả vào file
     def _savefile(self, i):
@@ -40,6 +43,7 @@ class break_cipher():
         fo.write('\n\t- Khóa giải mã: ' + ''.join(self._bkey))
         fo.write('\n\t- Khóa mã hóa: ' + ''.join(self._bkeyencryp))
         fo.write('\n\t> Chuỗi được giải mã: ' + self._ptext)
+        fo.write('\n\t- Mốc thời gian: ' + str(self._dt))
         fo.close()
 
     # tính điểm dựa vào key cục bộ truyền vào

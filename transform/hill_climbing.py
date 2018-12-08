@@ -1,6 +1,7 @@
 from .break_cipher import break_cipher
 from .score import score
 import random
+import datetime
 
 
 class hill_climbing(break_cipher):
@@ -42,5 +43,6 @@ class hill_climbing(break_cipher):
                 self._bkey = pkey[:]
                 self._bscore = pscore
                 self._bkeyencryp = self._keyencryp(ptable)
+                self._dt = datetime.datetime.now()
                 self._show(i)
                 self._savefile(i)

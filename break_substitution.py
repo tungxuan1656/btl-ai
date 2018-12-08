@@ -5,6 +5,7 @@ import random
 import os
 import re
 import sys
+import datetime
 from transform.hill_climbing import hill_climbing
 from transform.random_algorithm import random_algorithm
 from transform.sequential_search import sequential_search
@@ -49,6 +50,7 @@ s = re.sub('[^A-Z]', '', s.upper())
 print('___________________________________________________________')
 print('Chuỗi cần giải mã: ' + s + '\n')
 print('\nKhi giải mã nhấn "Ctrl + c" để dừng!\nBắt đầu giải mã:')
+print('Mốc thời gian: ' + str(datetime.datetime.now()))
 
 if (k == 1):
     break_ = hill_climbing(n, s)

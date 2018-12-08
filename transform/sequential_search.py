@@ -1,5 +1,6 @@
 from .break_cipher import break_cipher
 from .score import score
+import datetime
 
 
 class sequential_search(break_cipher):
@@ -106,6 +107,7 @@ class sequential_search(break_cipher):
                 self._bkey = pkey[:]
                 self._bscore = pscore
                 self._bkeyencryp = self._keyencryp(self._ptable)
+                self._dt = datetime.datetime.now()
                 self._show(self._i)
                 self._savefile(self._i)
         else:
