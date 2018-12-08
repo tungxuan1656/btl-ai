@@ -5,7 +5,9 @@ import random
 import os
 import re
 import sys
-from transform.break_cipher import break_cipher
+from transform.hill_climbing import hill_climbing
+from transform.random_algorithm import random_algorithm
+from transform.sequential_search import sequential_search
 
 
 # ngăn không cho hiển thị traceback (mã lỗi ngoại lệ)
@@ -35,7 +37,25 @@ while(n not in (2, 3, 4)):
     n = int(input('\tNhập không đúng, mời nhập lại: '))
 
 # loại bỏ ký tự ngoài chữ cái trong ciphertext
+print('\nLựa chọn thuật toán dùng để giải mã:')
+print('\tChọn thuật toán leo đồi nhập 1.')
+print('\tChọn thuật toán tìm kiếm ngẫu nhiên nhập 2.')
+print('\tChọn thuật toán tìm kiếm tuần tự nhập 3.')
+k = int(input('\tNhập lựa chọn: '))
+while(k not in (1, 2, 3)):
+    k = int(input('\tNhập không đúng, mời nhập lại: '))
+
 s = re.sub('[^A-Z]', '', s.upper())
+print('___________________________________________________________')
+print('Chuỗi cần giải mã: ' + s + '\n')
 print('\nKhi giải mã nhấn "Ctrl + c" để dừng!\nBắt đầu giải mã:')
-break_ = break_cipher(n, s)
-break_.start_break()
+
+if (k == 1):
+    break_ = hill_climbing(n, s)
+    break_.start_break()
+elif (k == 2):
+    break_ = random_algorithm(n, s)
+    break_.start_break()
+elif (k == 3):
+    break_ = sequential_search(n, s)
+    break_.start_break()
